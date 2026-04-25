@@ -1,50 +1,31 @@
-# Welcome to your Expo app 👋
+# Fokus
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Um aplicativo móvel de gerenciamento de tempo baseado na técnica Pomodoro, desenvolvido com **React Native** e **Expo** durante um curso da **Alura**. 
 
-## Get started
+## Características
 
-1. Install dependencies
+- **Sessão de Foco**: 25 minutos de concentração total
+- **Pausa Curta**: 5 minutos para descanso rápido  
+- **Pausa Longa**: 15 minutos para descanso profundo
+- **Timer Interativo**: Play, Pausa e Reset com interface intuitiva
 
-   ```bash
-   npm install
-   ```
+## Tecnologias
 
-2. Start the app
+- React Native 0.81.5
+- Expo ~54.0.33
+- Expo Router (navegação file-based)
+- React Navigation
+- TypeScript
 
-   ```bash
-   npx expo start
-   ```
+## Pré-requisitos
 
-In the output, you'll find options to open the app in a
+- Node.js v18+
+- npm ou yarn
+- Expo CLI
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Crédito
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Este projeto foi desenvolvido acompanhando o curso "React Native: desenvolvendo com Expo" da Alura.
 
-## Get a fresh project
+O código foi construído seguindo as aulas e orientações do curso, com fins educacionais.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
