@@ -3,66 +3,69 @@ import { Drawer } from 'expo-router/drawer';
 import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { TasksProvider } from '../components/context/TaskProvider';
 
 export default function Layout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#021123',
-          },
-          headerTintColor: '#fff',
-          drawerStyle: {
-            backgroundColor: '#021123'
-          },
-          drawerLabelStyle: {
-            color: '#fff',
-          }
-        }}>
-
-        <Drawer.Screen
-          name='index'
-          options={{
-            headerShown: false,
-            drawerItemStyle: { display: 'none' }
-          }}
-        />
-
-        <Drawer.Screen
-          name='add-task/index'
-          options={{
-            drawerItemStyle: { display: 'none' },
-            title: '',
-            headerLeft: () => {
-              return <Ionicons  //já funciona como botão. Não precisa colocar dentro de um pressable
-              name='arrow-back'
-              size={24}
-              color='#fff'
-              style={{marginLeft: 16}}
-              onPress={() => router.navigate('/tasks')}
-              />
+    <TasksProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Drawer
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#021123',
+            },
+            headerTintColor: '#fff',
+            drawerStyle: {
+              backgroundColor: '#021123'
+            },
+            drawerLabelStyle: {
+              color: '#fff',
             }
-          }}
-        />
+          }}>
 
-        <Drawer.Screen
-          name='pomodoro'
-          options={{
-            drawerLabel: 'Timer',
-            title: ''
-          }}
-        />
+          <Drawer.Screen
+            name='index'
+            options={{
+              headerShown: false,
+              drawerItemStyle: { display: 'none' }
+            }}
+          />
 
-        <Drawer.Screen
-          name='tasks/index'
-          options={{
-            drawerLabel: 'Lista de tarefas',
-            title: ''
-          }}
-        />
+          <Drawer.Screen
+            name='add-task/index'
+            options={{
+              drawerItemStyle: { display: 'none' },
+              title: '',
+              headerLeft: () => {
+                return <Ionicons  //já funciona como botão. Não precisa colocar dentro de um pressable
+                  name='arrow-back'
+                  size={24}
+                  color='#fff'
+                  style={{ marginLeft: 16 }}
+                  onPress={() => router.navigate('/tasks')}
+                />
+              }
+            }}
+          />
 
-      </Drawer>
-    </GestureHandlerRootView>
+          <Drawer.Screen
+            name='pomodoro'
+            options={{
+              drawerLabel: 'Timer',
+              title: ''
+            }}
+          />
+
+          <Drawer.Screen
+            name='tasks/index'
+            options={{
+              drawerLabel: 'Lista de tarefas',
+              title: ''
+            }}
+          />
+
+        </Drawer>
+      </GestureHandlerRootView>
+    </TasksProvider>
   );
 }
