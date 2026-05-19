@@ -1,36 +1,54 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import TaskItem from "../../components/TaskItem";
 import { FokusButton } from "../../components/FokusButton";
 import { IconPlus } from "../../components/Icons";
 import { router } from "expo-router";
+import useTaskContext from "../../components/context/useTaskContext";
 
 
 export default function Tasks() {
+
+    const { tasks, deleteTask, toggleTaskCompleted } = useTaskContext()
 
     return (
         <View style={styles.container}>
 
             <View style={styles.wrapper}>
-                <Text style={styles.text}>
-                    Listas de tarefas:
-                </Text>
 
                 <View style={styles.inner}>
-                    <TaskItem
-                        completed
-                        text='Estudar react'
-                    />
-                    <TaskItem
-                        text='Estudar react native'
+                    {/* {tasks.map(t => {
+                        return (
+                            <TaskItem
+                                completed={t.completed}
+                                text={t.description}
+                                key={t.id}
+                            />
+                        )
+                    })} */}
+                    <FlatList
+                        data={tasks}
+                        renderItem={({ item }) => <TaskItem
+                            completed={item.completed}
+                            text={item.description}
+                            onPressDelete={() => deleteTask(item.id)}
+                            onToggleComplete={() => toggleTaskCompleted(item.id)}
+                            onPressEdit={() => router.navigate(`/edit-task/${item.id}`)}
+                        />}
+                        keyExtractor={item => item.id}
+                        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+                        ListHeaderComponent={<Text style={styles.text}>Listas de tarefas:</Text>}
+                        ListFooterComponent={<View style={{marginTop: 16}}>
+                            <FokusButton
+                                title="Adicionar nova tarefa"
+                                icon={<IconPlus outline />}
+                                outline
+                                onPress={() => router.navigate('/add-task')}
+                            />
+                        </View>}
                     />
                 </View>
 
-                <FokusButton
-                    title="Adicionar nova tarefa"
-                    icon={<IconPlus outline />}
-                    outline
-                    onPress={() => router.navigate('/add-task')}
-                />
+
             </View>
 
         </View>
@@ -52,7 +70,8 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         color: '#fff',
-        fontSize: 26
+        fontSize: 26,
+        marginBottom: 16
     },
     inner: {
         gap: 8
