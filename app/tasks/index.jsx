@@ -17,25 +17,26 @@ export default function Tasks() {
             <View style={styles.wrapper}>
 
                 <View style={styles.inner}>
-                    
+
                     <FlatList
                         data={tasks}
                         renderItem={({ item }) => <TaskItem
                             completed={item.completed}
                             text={item.description}
                             onPressDelete={() => deleteTask(item.id)}
-                            onToggleComplete={() => toggleTaskCompleted(item.id)} 
+                            onToggleComplete={() => toggleTaskCompleted(item.id)}
                             onPressEdit={() => router.navigate(`/edit-task/${item.id}`)}
                         />}
                         keyExtractor={item => item.id}
                         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
                         ListHeaderComponent={<Text style={styles.text}>Listas de tarefas:</Text>}
-                        ListFooterComponent={<View style={{marginTop: 16}}>
+                        ListEmptyComponent={<Text style={styles.emptyText}>Ainda não há tarefas salvas</Text>}
+                        ListFooterComponent={<View style={{ marginTop: 16 }}>
                             <FokusButton
                                 title="Adicionar nova tarefa"
                                 icon={<IconPlus outline />}
                                 outline
-                                onPress={() => router.navigate('/add-task')} 
+                                onPress={() => router.navigate('/add-task')}
                             />
                         </View>}
                     />
@@ -69,6 +70,12 @@ const styles = StyleSheet.create({
     },
     inner: {
         gap: 8
+    },
+    emptyText: {
+        textAlign: 'center',
+        color: "#fff",
+        fontSize: 18,
+        marginVertical: 24
     }
 
 })
