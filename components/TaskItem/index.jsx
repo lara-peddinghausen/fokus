@@ -1,17 +1,19 @@
 import { Pressable, StyleSheet, Text, View } from "react-native"
 import { IconCheck, IconPencil, IconTrash } from "../Icons"
 
+// Componente de item de tarefa, utilizado para exibir cada tarefa na lista de tarefas.
+
 const TaskItem = ({ completed, text, onToggleComplete, onPressEdit, onPressDelete }) => {
 
     const cardStyles = [styles.card];
 
     if (completed) {
-        cardStyles.push(styles.cardCompleted)
+        cardStyles.push(styles.cardCompleted) // aplica um estilo diferente se a tarefa estiver marcada como completa
     }
 
     return (
         <View style={cardStyles}>
-            <Pressable onPress={onToggleComplete}>
+            <Pressable onPress={onToggleComplete}> 
                 <IconCheck checked={completed} />
             </Pressable>
             <Text style={styles.text}>

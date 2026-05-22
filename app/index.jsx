@@ -2,6 +2,8 @@ import { router } from "expo-router";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { FokusButton } from "../components/FokusButton";
 
+// Tela inicial
+
 export default function Index() {
 
   return (<View style={styles.container}>

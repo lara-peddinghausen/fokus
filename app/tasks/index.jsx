@@ -5,10 +5,11 @@ import { IconPlus } from "../../components/Icons";
 import { router } from "expo-router";
 import useTaskContext from "../../components/context/useTaskContext";
 
+// Tela para exibir a lista de tarefas e para adicionar novas tarefas.
 
 export default function Tasks() {
 
-    const { tasks, deleteTask, toggleTaskCompleted } = useTaskContext()
+    const { tasks, deleteTask, toggleTaskCompleted } = useTaskContext() // usa funções definidas no TaskProvider para manipular as tarefas
 
     return (
         <View style={styles.container}>
@@ -16,22 +17,14 @@ export default function Tasks() {
             <View style={styles.wrapper}>
 
                 <View style={styles.inner}>
-                    {/* {tasks.map(t => {
-                        return (
-                            <TaskItem
-                                completed={t.completed}
-                                text={t.description}
-                                key={t.id}
-                            />
-                        )
-                    })} */}
+                    
                     <FlatList
                         data={tasks}
                         renderItem={({ item }) => <TaskItem
                             completed={item.completed}
                             text={item.description}
                             onPressDelete={() => deleteTask(item.id)}
-                            onToggleComplete={() => toggleTaskCompleted(item.id)}
+                            onToggleComplete={() => toggleTaskCompleted(item.id)} 
                             onPressEdit={() => router.navigate(`/edit-task/${item.id}`)}
                         />}
                         keyExtractor={item => item.id}
@@ -42,7 +35,7 @@ export default function Tasks() {
                                 title="Adicionar nova tarefa"
                                 icon={<IconPlus outline />}
                                 outline
-                                onPress={() => router.navigate('/add-task')}
+                                onPress={() => router.navigate('/add-task')} 
                             />
                         </View>}
                     />
@@ -71,7 +64,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#fff',
         fontSize: 26,
-        marginBottom: 16
+        marginBottom: 16,
+        fontWeight: 'bold'
     },
     inner: {
         gap: 8

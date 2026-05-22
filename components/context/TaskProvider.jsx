@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useEffect, useState } from "react";
 
+// Contexto para gerenciar as tarefas da aplicação, incluindo a persistência dos dados usando AsyncStorage.
 
 export const TaskContext = createContext()
 
@@ -12,7 +13,7 @@ export function TasksProvider({ children }) {
     const [isLoaded, setIsLoaded] = useState(false)
 
 
-    useEffect(() => {
+    useEffect(() => { // carrega as tarefas do AsyncStorage quando o componente é montado
         const getData = async () => {
             try {
                 const jsonValue = await AsyncStorage.getItem(TASKS_STORAGE_KEY);
@@ -26,7 +27,7 @@ export function TasksProvider({ children }) {
         getData()
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { // salva as tarefas no AsyncStorage sempre que a lista de tarefas é atualizada
         const storeData = async (value) => {
             try {
                 const jsonValue = JSON.stringify(value);
@@ -44,7 +45,7 @@ export function TasksProvider({ children }) {
         console.log('Tarefa vai ser adicionada')
         setTasks(oldState => {
             return [
-                ...oldState,
+                ...oldState, // mantém as tarefas antigas e adiciona a nova tarefa no final da lista
                 {
                     description,
                     id: oldState.length + 1

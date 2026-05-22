@@ -5,7 +5,9 @@ import { ActionButton } from "../components/ActionButton";
 import { Timer } from "../components/Timer";
 import { IconPause, IconPlay } from "../components/Icons";
 
-const pomodoro = [
+// Tela do Pomodoro
+
+const pomodoro = [ // definindo os tipos de timer
   {
     id: "focus",
     initialValue: 25 * 60,
@@ -36,7 +38,7 @@ export default function Pomodoro() {
 
   const timerRef = useRef(null);
 
-  const clear = () => {
+  const clear = () => { 
     if (timerRef.current != null) {
       clearInterval(timerRef.current);
       timerRef.current = null;
@@ -88,7 +90,7 @@ export default function Pomodoro() {
           ))}
         </View>
 
-        <Timer totalSeconds={seconds} />
+        <Timer totalSeconds={seconds} /> 
 
         <FokusButton
           title={timerRunning ? "Pausar" : "Começar"}

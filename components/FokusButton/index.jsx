@@ -1,5 +1,7 @@
 import { StyleSheet, Text, Pressable } from "react-native";
 
+// Componente de botão principal, utilizado na tela inicial e para iniciar o timer
+
 export const FokusButton = ({ onPress, title, icon, outline }) => {
   return (
     <Pressable
