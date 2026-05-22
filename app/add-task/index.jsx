@@ -4,11 +4,13 @@ import useTaskContext from "../../components/context/useTaskContext";
 import { useState } from "react";
 import { router } from "expo-router";
 
+// Tela para adicionar novas tarefas 
+
 export default function AddTask() {
 
     const [description, setDescription] = useState()
 
-    const {addTask} = useTaskContext()
+    const { addTask } = useTaskContext()
 
     const submitTask = () => {
         if (!description) {
@@ -22,8 +24,9 @@ export default function AddTask() {
     return (
         <KeyboardAvoidingView
             style={styles.container}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'heigh'}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
+    
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
                 <View style={styles.inner}>
@@ -43,7 +46,7 @@ export default function AddTask() {
                     <View style={styles.actions}>
                         <Pressable style={styles.button} onPress={submitTask}>
                             <IconSave />
-                            <Text>Salvar</Text>
+                            <Text style={styles.label}>Salvar</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -60,9 +63,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        color: '#fff',
+        color: '#021123',
         textAlign: 'center',
-        fontSize: 26
+        fontSize: 26,
+        fontWeight: 'bold'
     },
     inner: {
         backgroundColor: '#98A0A8',
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 18,
-        fontWeight: 600
+        fontWeight: 600,
     },
     input: {
         backgroundColor: '#fff',
