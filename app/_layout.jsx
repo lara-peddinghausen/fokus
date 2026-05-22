@@ -37,7 +37,7 @@ export default function Layout() {
               drawerItemStyle: { display: 'none' },
               title: '',
               headerLeft: () => {
-                return <Ionicons  //já funciona como botão. Não precisa colocar dentro de um pressable
+                return <Ionicons
                   name='arrow-back'
                   size={24}
                   color='#fff'
@@ -60,6 +60,13 @@ export default function Layout() {
             name='tasks/index'
             options={{
               drawerLabel: 'Lista de tarefas',
+              title: ''
+            }}
+          />
+
+          <Drawer.Screen
+            name='edit-task/[id]'
+            options={{
               title: ''
             }}
           />
